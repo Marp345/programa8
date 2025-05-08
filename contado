@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int TAM = 20;
+    int numeros[TAM];
+    bool contado[TAM] = {false}; // Para marcar si ya contamos un número
+    int frecuencia;
+
+    // Ingreso de los 20 números
+    cout << "Ingresa 20 numeros enteros (pueden repetirse):" << endl;
+    for (int i = 0; i < TAM; i++) {
+        cout << "Numero " << i + 1 << ": ";
+        cin >> numeros[i];
+    }
+
+    cout << "\nFrecuencia de aparicion de cada numero distinto:\n";
+
+    // Cálculo de frecuencias
+    for (int i = 0; i < TAM; i++) {
+        if (!contado[i]) {
+            frecuencia = 1;
+            for (int j = i + 1; j < TAM; j++) {
+                if (numeros[i] == numeros[j]) {
+                    frecuencia++;
+                    contado[j] = true; // Marcamos como ya contado
+                }
+            }
+            cout << "Numero " << numeros[i] << ": " << frecuencia << " vez/veces\n";
+        }
+    }
+
+    return 0;
+}
+
